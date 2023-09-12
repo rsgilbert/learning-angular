@@ -1,0 +1,29 @@
+<h1>{{ title }}</h1>
+
+<p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
+
+
+<ul>
+    <li (click)="selectedProduct = 'Webcam'">Webcam</li>
+    <li (click)="updateSelectedProduct('Microphone')">Microphone</li>
+    <li (click)="updateSelectedProduct('Wireless Keyboard')">Wireless Keyboard</li>
+</ul>
+
+<app-product-detail 
+    #product
+    [name]="selectedProduct"
+    (bought)="onBuy($event)"
+></app-product-detail>
+
+<button (click)="onClick()">
+    Click Me {{ product.name }}
+</button>
+
+
+
+
+
+
+
+
+
