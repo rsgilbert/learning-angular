@@ -1,5 +1,6 @@
 
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Product } from '../product';
 
 @Component({
     selector: 'app-product-detail',
@@ -9,18 +10,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
     // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
-    @Input() name = 'TT'
+    @Input() product : Product | undefined
     price = 0
     @Output() bought = new EventEmitter<string>()
 
     buy() {
-        this.bought.emit(this.name)
+        this.bought.emit(this.product?.name)
         // console.log('bought')
     }
 
     get productName(): string {
         // console.log(`Get ${this.name}`)
-        return this.name;
+        return this.product?.name ?? '';
     }
 
     constructor() {

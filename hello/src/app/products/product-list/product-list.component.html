@@ -2,23 +2,29 @@
 
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
 
-
 <ul>
-    <li (click)="selectedProduct = 'Webcam'">Webcam</li>
-    <li (click)="updateSelectedProduct('Microphone')">Microphone</li>
-    <li (click)="updateSelectedProduct('Wireless Keyboard')">Wireless Keyboard</li>
+    <li *ngFor="let product of products;let i=index; let isLast=last; let isFirst = first; let isEven = even; trackBy: trackByProducts" (click)="selectedProduct=product">
+         {{ product.name }}
+    </li>
 </ul>
 
 <app-product-detail 
     #product
-    [name]="selectedProduct"
+    [product]="selectedProduct"
     (bought)="onBuy($event)"
-></app-product-detail>
+    *ngIf="selectedProduct; else noProduct">
+</app-product-detail>
+<ng-template #noProduct>
+    <p><i>No product selected</i></p>
+</ng-template>
 
-<button (click)="onClick()">
+<!-- <button (click)="onClick()">
     Click Me {{ product.name }}
-</button>
+</button> -->
 
+<button (click)="removeLast()">
+    Remove last
+</button>
 
 
 

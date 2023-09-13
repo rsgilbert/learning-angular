@@ -1,24 +1,47 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { Product } from '../product';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements AfterViewInit {
-    @ViewChild(ProductDetailComponent) 
+    @ViewChild(ProductDetailComponent)
     productDetail: ProductDetailComponent | undefined
 
     ngAfterViewInit(): void {
         console.log('ngAfterViewInit productDetail', this.productDetail)
     }
 
-    selectedProduct = 'Webcam'
+    selectedProduct: Product | undefined
     title = 'Products'
     subtitle = 'A list of products you can buy'
+    products = [
+        {
+            name: 'Watch',
+            price: 10
+        },
+        {
+            name: 'Swissroll',
+            price: 8000
+        },
+        {
+            name: 'Blanket',
+            price: 5
+        },
+        {
+            name: 'Art piece',
+            price: 2000
+        },
+        {
+            name: 'Frying pan',
+            price: 200
+        }
+    ]
     currentClasses = {
-        star: true, 
+        star: true,
         light: true,
         dark: false
     }
@@ -29,11 +52,17 @@ export class ProductListComponent implements AfterViewInit {
     onClick() {
         console.log('Clicked')
     }
-    updateSelectedProduct(newSelectedProduct: string){ 
-        this.selectedProduct = newSelectedProduct
+
+
+    onBuy(name: string) {
+        console.log(`onBuy(name): Bought ${name}`)
     }
 
-   onBuy(name: string) {
-    console.log(`onBuy(name): Bought ${name}`)
-   }
+    removeLast() {
+        this.products.pop()
+    }
+
+    trackByProducts(index: number, product: Product): string {
+        return 'c'
+    }
 }

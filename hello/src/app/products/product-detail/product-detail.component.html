@@ -1,4 +1,18 @@
-<h1>Product Details</h1>
-<h3>{{ name }}</h3>
-<button (click)="buy()">Buy Now</button>
-<p>{{ productName }}</p>
+<div *ngIf="product;">
+    <h1>Product Details</h1>
+    <h3>{{ product.name }}</h3>
+    <button (click)="buy()">Buy Now</button>
+    <p>{{ productName }}</p>
+
+<div [ngSwitch]="product.name">
+        <p *ngSwitchCase='"Blanket"'>
+            Product is used for sleep
+        </p>
+        <p *ngSwitchCase="'Watch'">
+            Product is for time keeping
+        </p>
+        <p *ngSwitchDefault>
+            Product is for general use
+        </p>
+    </div>
+</div>
