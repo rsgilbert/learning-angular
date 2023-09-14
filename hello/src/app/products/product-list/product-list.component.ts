@@ -65,4 +65,10 @@ export class ProductListComponent implements AfterViewInit {
     trackByProducts(index: number, product: Product): string {
         return 'c'
     }
+
+    totalPrice() {
+        return this.products.reduce((acc, curr) => acc + curr.price, 0)
+    }
+
+    today = new Date()
 }
