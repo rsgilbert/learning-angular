@@ -1,14 +1,8 @@
 <h1>{{ title }}</h1>
 
+<p appCopyright></p>
+
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
-
-<!-- <p>{{ today }}</p>
-<p>{{ today | date }}</p>
-<p>{{ today | date:'fullDate' }}</p>
-<p>{{ today | date:'shortDate' }}</p>
-<p>{{ today | date:'mediumDate' }}</p>
-<p>{{ today | date:"dd'th'/MM/yyyy" }}</p> -->
-
 
 <ul>
     <li *ngFor="let product of products | sort | filter2 ; let i=index; let isLast=last; let isFirst = first; let isEven = even; trackBy: trackByProducts" (click)="selectedProduct=product">
@@ -21,7 +15,6 @@
             </p>
          </div>
     </li>
-
 </ul>
 
 <app-product-detail 
@@ -41,7 +34,6 @@
 <button (click)="removeLast()">
     Remove last
 </button>
-
 
 
 

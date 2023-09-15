@@ -4,13 +4,14 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { SortPipe } from './sort.pipe';
 import { FilterPipe } from './filter.pipe';
+import { CopyrightDirective } from '../copyright.directive';
 
 
 
 @NgModule({
-  declarations: [ProductListComponent, ProductDetailComponent, SortPipe],
+  declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective],
   imports: [
-    CommonModule, FilterPipe
+    CommonModule, FilterPipe, 
   ],
   exports: [ProductListComponent]
 })
