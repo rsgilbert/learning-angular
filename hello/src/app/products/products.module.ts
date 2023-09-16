@@ -5,14 +5,17 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { SortPipe } from './sort.pipe';
 import { FilterPipe } from './filter.pipe';
 import { CopyrightDirective } from '../copyright.directive';
+import { ProductHostDirective } from './product-host.directive';
+import { AutofocusDirective } from '../autofocus.directive';
 
 
 
 @NgModule({
-  declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective],
-  imports: [
-    CommonModule, FilterPipe, 
-  ],
-  exports: [ProductListComponent]
+    declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective, ProductHostDirective,],
+    imports: [
+        CommonModule, FilterPipe,
+        AutofocusDirective
+    ],
+    exports: [ProductListComponent]
 })
 export class ProductsModule { }

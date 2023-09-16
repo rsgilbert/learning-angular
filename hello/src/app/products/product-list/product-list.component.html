@@ -1,16 +1,13 @@
 <h1>{{ title }}</h1>
 
-<p appCopyright></p>
 
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
 
+<h3>Offers</h3>
+<ng-template appProductHost></ng-template>
 
-<input  type="number">
 <ul>
     <li *ngFor="let product of products | sort | filter2 ; let i=index; let isLast=last; let isFirst = first; let isEven = even; trackBy: trackByProducts" (click)="selectedProduct=product">
-         <!-- {{ product.name | uppercase }} - {{ product.price | currency:'GBP' }} - {{ (product.price/this.totalPrice()) | percent }}
-         {{ product | json }} -->
-
          <div>
             <p *ngFor="let p of product | keyvalue">
                 <span>{{ p.key }} : {{ p.value }}</span>
@@ -29,13 +26,9 @@
     <p><i>No product selected</i></p>
 </ng-template>
 
-<!-- <button (click)="onClick()">
-    Click Me {{ product.name }}
-</button> -->
 
-<button (click)="removeLast()">
-    Remove last
-</button>
+<p appCopyright></p>
+
 
 
 

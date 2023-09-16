@@ -1,2 +1,7 @@
-<input appNumeric>
+<div *appPermission="['admin', 'agent']">
+    <input appNumeric>
+</div>
+<p *appPermission="['agent']" appAutofocus>Hi there, how are you?</p>
+
+<p *appPermission="['admin']">Here is a secret: talanta</p>
 <app-product-list></app-product-list>
