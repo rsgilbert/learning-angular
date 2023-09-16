@@ -10,6 +10,12 @@ export class ProductsService {
     p1 = Math.random()
 
     constructor() {
+        // try {
+        //     throw new Error('xx')
+        // }
+        // catch (e) {
+        //     console.error(e)
+        // }
         console.log('constructing products service')
     }
 
@@ -20,12 +26,16 @@ export class ProductsService {
                 price: this.p1
             },
             {
-                name: 'Laptop',
-                price: 2000000
+                name: 'Samsung galaxy A20',
+                price: 100
             },
             {
-                name: 'Pen',
-                price: 500
+                name: 'Bicycle',
+                price: 20,
+            },
+            {
+                name: 'Laptop',
+                price: 2000000
             }
         ]
     }

@@ -3,23 +3,21 @@
 
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
 
-<h3>Offers</h3>
-<ng-template appProductHost></ng-template>
+<!-- <h3>Offers</h3> -->
+<!-- <ng-template appProductHost></ng-template> -->
 
 <ul>
-    <li *ngFor="let product of products | sort | filter2 ; let i=index; let isLast=last; let isFirst = first; let isEven = even; trackBy: trackByProducts" (click)="selectedProduct=product">
-         <div>
-            <p *ngFor="let p of product | keyvalue">
+    <li *ngFor="let product of products | sort  ; let i=index; let isLast=last; let isEven = even; trackBy: trackByProducts"
+        (click)="selectedProduct=product">
+        <app-product-view [id]="i"></app-product-view>
+        <!-- <p *ngFor="let p of product | keyvalue">
                 <span>{{ p.key }} : {{ p.value }}</span>
-            </p>
-         </div>
+            </p> -->
+
     </li>
 </ul>
 
-<app-product-detail 
-    #product
-    [product]="selectedProduct"
-    (bought)="onBuy($event)"
+<app-product-detail #product [product]="selectedProduct" (bought)="onBuy($event)"
     *ngIf="selectedProduct; else noProduct">
 </app-product-detail>
 <ng-template #noProduct>
@@ -30,11 +28,3 @@
 
 
 <p appCopyright></p>
-
-
-
-
-
-
-
-

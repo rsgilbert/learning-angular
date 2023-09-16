@@ -1,23 +1,25 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Host, OnInit, Optional, Output, SkipSelf, ViewChild } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { ProductViewService } from '../product-view.service';
 
 @Component({
     selector: 'app-product-list',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css'],
-   providers: [ProductsService] // this ProductsService instance will be used for this component and child components
+    providers: [ ProductViewService, { provide: ProductsService, useClass: ProductsService}], // this ProductsService instance will be used for this component and child components
+//    viewProviders: [ProductsService]
 })
 export class ProductListComponent implements AfterViewInit, OnInit {
     @ViewChild(ProductDetailComponent)
     productDetail: ProductDetailComponent | undefined
-    products : Product[] = []
+    products: Product[] = []
 
     ngOnInit(): void {
         this.products = this.productsService.getProducts()
         this.productsService.setComment('ngOnInit(): product-list is running', 'product-list')
-      
+
     }
     ngAfterViewInit(): void {
         // console.log('ngAfterViewInit productDetail', this.productDetail)
@@ -28,7 +30,7 @@ export class ProductListComponent implements AfterViewInit, OnInit {
 
     }
 
-  
+
     selectedProduct: Product | undefined
     title = 'Products'
     subtitle = 'A list of products you can buy'
