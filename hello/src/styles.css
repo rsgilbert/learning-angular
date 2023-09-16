@@ -7,3 +7,11 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
+
+.invalid {
+    border-bottom: 10px solid red;
+}
+
+.valid {
+    border-bottom: 10px solid green;
+}
