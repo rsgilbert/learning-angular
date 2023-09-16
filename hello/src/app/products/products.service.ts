@@ -5,7 +5,7 @@ import { Product } from './product';
     providedIn: 'root'
 })
 export class ProductsService {
-    comment = ''
+    comment = 'my cmt'
     commentSetBy = ''
     p1 = Math.random()
 

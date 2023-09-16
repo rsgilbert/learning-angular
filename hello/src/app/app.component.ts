@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ProductsService } from './products/products.service';
+import { APP_CONFIG, AppConfig, appConfig } from './app.config';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [
+    { provide: APP_CONFIG, useValue: appConfig }, 
+  ]
 })
 export class AppComponent {
-  title = 'Learning Angular';
+  title = ''
   description = 'Hi'
+  version = 0
 
-  constructor(private productsService: ProductsService) {
+
+  constructor(public productsService: ProductsService,  @Inject(APP_CONFIG) public config: AppConfig) {
 
   }
 
@@ -18,5 +24,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.prName = this.productsService.getProducts()[0].name
+    this.title = this.config.title
+    this.version = this.config.version
   }
 }
