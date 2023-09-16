@@ -11,7 +11,7 @@ export class ProductHostDirective implements OnInit {
    }
 
   ngOnInit(): void {
-      console.log('initializing product host directive')
+    //   console.log('initializing product host directive')
       const productRef = this.vc.createComponent(ProductDetailComponent)
       productRef.setInput('product', {
         name: 'Optical nutrition',

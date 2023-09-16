@@ -12,7 +12,7 @@ export class PermissionDirective implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.appPermission)
+        // console.log(this.appPermission)
         if (this.appPermission.includes(this.currentRole)) {
             this.vc.createEmbeddedView(this.tmplRef)
         }

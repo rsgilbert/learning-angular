@@ -6,7 +6,6 @@ import { Directive, ElementRef } from '@angular/core';
 export class CopyrightDirective {
 
   constructor(el: ElementRef) {
-    console.log('copy')
     const currentYear = new Date().getFullYear()
     const targetEl: HTMLElement = el.nativeElement
     targetEl.classList.add('copyright')

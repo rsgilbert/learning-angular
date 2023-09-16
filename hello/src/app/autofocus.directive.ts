@@ -12,6 +12,6 @@ export class AutofocusDirective implements OnInit {
   }
 
   ngOnInit(): void {
-      console.log('focusing')
+    //   console.log('focusing')
   }
 }

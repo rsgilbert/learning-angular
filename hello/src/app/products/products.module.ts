@@ -7,15 +7,17 @@ import { FilterPipe } from './filter.pipe';
 import { CopyrightDirective } from '../copyright.directive';
 import { ProductHostDirective } from './product-host.directive';
 import { AutofocusDirective } from '../autofocus.directive';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 
 
 @NgModule({
-    declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective, ProductHostDirective,],
+    declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective, ProductHostDirective, FavoritesComponent, ProductViewComponent,],
     imports: [
         CommonModule, FilterPipe,
         AutofocusDirective
     ],
-    exports: [ProductListComponent]
+    exports: [ProductListComponent],
 })
 export class ProductsModule { }
