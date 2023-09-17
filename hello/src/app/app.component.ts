@@ -12,15 +12,11 @@ import { APP_CONFIG, AppConfig, appConfig } from './app.config';
 })
 export class AppComponent {
   title = ''
-  description = 'Hi'
   version = 0
 
 
   constructor(public productsService: ProductsService,  @Inject(APP_CONFIG) public config: AppConfig) {
-
   }
-
-  prName : string = ''
 
   ngOnInit() {
     this.title = this.config.title

@@ -11,6 +11,14 @@ import { AutofocusDirective } from './autofocus.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AuthModule } from './auth/auth.module';
 import { AuthInterceptor } from './auth.interceptor';
+import { RouterModule, Routes } from '@angular/router';
+import { ProductListComponent } from './products/product-list/product-list.component';
+
+
+const routes: Routes = [
+    { path: 'products', component: ProductListComponent },
+    { path: '**', component: ProductListComponent }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +32,8 @@ import { AuthInterceptor } from './auth.interceptor';
     AuthModule,
     CartComponent,
     AutofocusDirective,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     {
