@@ -10,6 +10,7 @@ import { AutofocusDirective } from '../autofocus.directive';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 
 
@@ -17,7 +18,8 @@ import { ProductsCreateComponent } from './products-create/products-create.compo
     declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective, ProductHostDirective, FavoritesComponent, ProductViewComponent, ProductsCreateComponent,],
     imports: [
         CommonModule, FilterPipe,
-        AutofocusDirective
+        AutofocusDirective,
+        ProductsRoutingModule
     ],
     exports: [ProductListComponent],
 })

@@ -13,7 +13,8 @@ import { AuthModule } from './auth/auth.module';
 import { AuthInterceptor } from './auth.interceptor';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './products/product-list/product-list.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AppComponent,
     NumericDirective,
     PermissionDirective,
+    PageNotFoundComponent,
     // CopyrightDirective, 
   ],
   imports: [
