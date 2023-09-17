@@ -9,11 +9,12 @@ import { ProductHostDirective } from './product-host.directive';
 import { AutofocusDirective } from '../autofocus.directive';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductsCreateComponent } from './products-create/products-create.component';
 
 
 
 @NgModule({
-    declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective, ProductHostDirective, FavoritesComponent, ProductViewComponent,],
+    declarations: [ProductListComponent, ProductDetailComponent, SortPipe, CopyrightDirective, ProductHostDirective, FavoritesComponent, ProductViewComponent, ProductsCreateComponent,],
     imports: [
         CommonModule, FilterPipe,
         AutofocusDirective

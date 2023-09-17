@@ -1,0 +1,12 @@
+<p>products-create works!</p>
+<div>
+    <label for="name">Name</label>
+    <input id="name" #name>
+    <label for="price">Price</label>
+    <input id="price" #price />
+</div>
+<div>
+    <button (click)="createProduct(name.value, price.valueAsNumber)">
+        Create
+    </button>
+</div>

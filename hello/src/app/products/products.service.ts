@@ -15,13 +15,17 @@ export class ProductsService {
     private productsUrl = 'https://fakestoreapi.com/products'
 
     constructor(private http: HttpClient) {
-        // try {
-        //     throw new Error('xx')
-        // }
-        // catch (e) {
-        //     console.error(e)
-        // }
         console.log('constructing products service')
+    }
+
+    addProduct(name: string, price: number) : Observable<Product> {
+        return this.http.post<ProductDTO>(this.productsUrl, {
+            title: name,
+            price: price 
+        })
+        .pipe(
+            map(productDTO => this.convertToProduct(productDTO))
+        )
     }
 
     getProducts(): Observable<Product[]> {

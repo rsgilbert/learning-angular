@@ -1,14 +1,11 @@
-<!-- <h1>{{ title }}</h1> -->
 
 <p>{{ dt }}</p>
 <button (click)="cancelDateSubscription()">cancel subscription</button>
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
 
-<!-- <h3>Offers</h3> -->
-<!-- <ng-template appProductHost></ng-template> -->
-
+<app-products-create (added)="onAdd($event)"></app-products-create>
 <ul>
-<li *ngFor="let product of products$ | async; let i=index"
+<li *ngFor="let product of products; let i=index"
         (click)="selectedProduct=product">
         {{ product.name}}
         <!-- <app-product-view [id]="i"></app-product-view> -->
