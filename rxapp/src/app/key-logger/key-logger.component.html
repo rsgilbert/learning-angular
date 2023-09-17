@@ -1,2 +1,12 @@
-<input type="text" #keyContainer>
+<div>
+    <label>Numeric: 
+        <input type="checkbox"  (change)="onNumericChange()">
+    </label>
+</div>
+<div>
+    <input type="text" #keyContainer>
+</div>
+
+
+
 You pressed: {{ keys }}
