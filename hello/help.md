@@ -10,3 +10,7 @@ ng generate directive autofocus --standalone
 
 generate a component that should be exported
 ng generate component auth --export 
+
+generate interceptor
+ng generate interceptor auth
+

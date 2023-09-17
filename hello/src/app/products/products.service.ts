@@ -32,7 +32,8 @@ export class ProductsService {
         // return of(this.products)
         const options = {
             headers: new HttpHeaders({
-                Authorization: "tkn1"
+                Authorization: "tkn1",
+                'x-token': 'xx'
             })
         }
         return this.http.get<ProductDTO[]>(this.productsUrl, options).pipe(
