@@ -13,12 +13,9 @@ import { AuthModule } from './auth/auth.module';
 import { AuthInterceptor } from './auth.interceptor';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './products/product-list/product-list.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
-const routes: Routes = [
-    { path: 'products', component: ProductListComponent },
-    { path: '**', component: ProductListComponent }
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +30,7 @@ const routes: Routes = [
     CartComponent,
     AutofocusDirective,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   providers: [
     {
