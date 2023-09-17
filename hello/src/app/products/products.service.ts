@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Product, ProductDTO } from './product';
 
 
@@ -30,7 +30,12 @@ export class ProductsService {
 
     getProducts(): Observable<Product[]> {
         // return of(this.products)
-        return this.http.get<ProductDTO[]>(this.productsUrl).pipe(
+        const options = {
+            headers: new HttpHeaders({
+                Authorization: "tkn1"
+            })
+        }
+        return this.http.get<ProductDTO[]>(this.productsUrl, options).pipe(
             map(productsDTO => productsDTO.map<Product>(this.convertToProduct))
         )
     }

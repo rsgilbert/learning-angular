@@ -1,9 +1,7 @@
 
-<p>{{ dt }}</p>
-<button (click)="cancelDateSubscription()">cancel subscription</button>
+<!-- <p>{{ dt }}</p>
+<button (click)="cancelDateSubscription()">cancel subscription</button> -->
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
-
-<app-products-create (added)="onAdd($event)"></app-products-create>
 <ul>
 <li *ngFor="let product of products; let i=index"
         (click)="selectedProduct=product">
@@ -25,5 +23,7 @@
 <!-- <h2>Favorites</h2>
 <app-favorites></app-favorites> -->
 
+
+<app-products-create (added)="onAdd($event)"></app-products-create>
 
 <p appCopyright></p>

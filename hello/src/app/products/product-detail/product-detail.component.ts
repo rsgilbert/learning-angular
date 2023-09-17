@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../product';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from '../products.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
     
@@ -29,7 +30,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         return this.product?.name ?? '';
     }
 
-    constructor(private productsService: ProductsService) {
+    constructor(private productsService: ProductsService, public authService: AuthService) {
         // console.log('ProductDetailComponent constructor(): name is', this.name, 'price is', this.price)
     }
 
