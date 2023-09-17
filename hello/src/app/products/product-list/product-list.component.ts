@@ -19,9 +19,11 @@ export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
     private productsSub: Subscription | undefined
     dt : string = ''
     dtSub : Subscription | undefined
+    products$ : Observable<Product[]> | undefined
 
     private getProducts() {
-        this.productsSub = this.productsService.getProducts().subscribe(products => this.products = products)
+        this.products$ = this.productsService.getProducts()
+        // this.productsSub = this.productsService.getProducts().subscribe(products => this.products = products)
     }
 
     ngOnInit(): void {
