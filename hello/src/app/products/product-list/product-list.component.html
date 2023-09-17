@@ -19,7 +19,7 @@
     </li>
 </ul>
 
-<app-product-detail #product [product]="selectedProduct" (bought)="onBuy($event)"
+<app-product-detail #product [product]="selectedProduct" [id]="selectedProduct.id" (bought)="onBuy($event)"
     *ngIf="selectedProduct; else noProduct">
 </app-product-detail>
 <ng-template #noProduct>

@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
 import { Product } from '../product';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { ProductsService } from '../products.service';
 
 @Component({
     
@@ -10,6 +12,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnD
     // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
+    @Input() id: number | undefined = -1 
+    product$:Observable<Product> | undefined
+
     @Input() product : Product | undefined
     price = 0
     @Output() bought = new EventEmitter<string>()
@@ -24,7 +29,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         return this.product?.name ?? '';
     }
 
-    constructor() {
+    constructor(private productsService: ProductsService) {
         // console.log('ProductDetailComponent constructor(): name is', this.name, 'price is', this.price)
     }
 
@@ -33,6 +38,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        this.product$ = this.productsService.getProduct(this.id ?? -1)
         // console.log(changes)
         // const nameChanges = changes['name']
         // console.dir(nameChanges, { depth: null })
