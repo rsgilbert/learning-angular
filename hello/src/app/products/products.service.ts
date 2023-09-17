@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -19,27 +20,28 @@ export class ProductsService {
         console.log('constructing products service')
     }
 
-    getProducts(): Product[] {
-        return [
-            {
-                name: 'Javeline' + this.p1,
-                price: this.p1
-            },
-            {
-                name: 'Samsung galaxy A20',
-                price: 100
-            },
-            {
-                name: 'Bicycle',
-                price: 20,
-            },
-            {
-                name: 'Laptop',
-                price: 2000000
-            }
-        ]
+    getProducts(): Observable<Product[]> {
+        return of(this.products)
     }
 
+    private products : Product[] = [
+        {
+            name: 'Javeline' ,
+            price: Number((100 * this.p1).toFixed(2)),
+        },
+        {
+            name: 'Samsung galaxy A20',
+            price: 100
+        },
+        {
+            name: 'Bicycle',
+            price: 20,
+        },
+        {
+            name: 'Laptop',
+            price: 2000000
+        }
+    ]
     setComment(cmt: string, setBy: string) {
         console.log(`before: ${this.comment} by ${this.commentSetBy}`)
         this.comment = cmt;

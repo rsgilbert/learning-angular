@@ -23,7 +23,7 @@ export class FavoritesComponent implements OnInit {
 
     ngOnInit(): void {
         this.productsService.setComment('ngOnInit(): Favorite is running', 'favorite')
-        this.products = this.productsService.getProducts()
+        // this.products = this.productsService.getProducts()
     }
 
 }

@@ -1,6 +1,7 @@
-<h1>{{ title }}</h1>
+<!-- <h1>{{ title }}</h1> -->
 
-
+<p>{{ dt }}</p>
+<button (click)="cancelDateSubscription()">cancel subscription</button>
 <p [class]="currentClasses" [style.font-size]="'40px'" [style]="currentStyles">Chocolate bar</p>
 
 <!-- <h3>Offers</h3> -->
@@ -23,8 +24,8 @@
 <ng-template #noProduct>
     <p><i>No product selected</i></p>
 </ng-template>
-<h2>Favorites</h2>
-<app-favorites></app-favorites>
+<!-- <h2>Favorites</h2>
+<app-favorites></app-favorites> -->
 
 
 <p appCopyright></p>

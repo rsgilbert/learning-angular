@@ -23,7 +23,6 @@ export class AppComponent {
   prName : string = ''
 
   ngOnInit() {
-    this.prName = this.productsService.getProducts()[0].name
     this.title = this.config.title
     this.version = this.config.version
   }

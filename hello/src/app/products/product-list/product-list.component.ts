@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Host, OnInit, Optional, Output, SkipSelf, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Host, OnInit, Optional, Output, SkipSelf, ViewChild, OnDestroy } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 import { ProductViewService } from '../product-view.service';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
     selector: 'app-product-list',
@@ -11,16 +12,46 @@ import { ProductViewService } from '../product-view.service';
     providers: [ ProductViewService, { provide: ProductsService, useClass: ProductsService}], // this ProductsService instance will be used for this component and child components
 //    viewProviders: [ProductsService]
 })
-export class ProductListComponent implements AfterViewInit, OnInit {
+export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
     @ViewChild(ProductDetailComponent)
     productDetail: ProductDetailComponent | undefined
     products: Product[] = []
+    private productsSub: Subscription | undefined
+    dt : string = ''
+    dtSub : Subscription | undefined
+
+    private getProducts() {
+        this.productsSub = this.productsService.getProducts().subscribe(products => this.products = products)
+    }
 
     ngOnInit(): void {
-        this.products = this.productsService.getProducts()
-        this.productsService.setComment('ngOnInit(): product-list is running', 'product-list')
-
+        this.getProducts()
+        this.setDate()
     }
+
+    setDate() {
+        const observable1 = new Observable<Date>(o => {
+            setInterval(() => {
+                o.next(new Date())
+            }, 1000)
+        });
+        this.dtSub = observable1.subscribe(d => {
+            console.log('another dt', d)
+            this.dt = d.toISOString().split('T')[1]
+        })
+    }
+
+    cancelDateSubscription() {
+        console.log('cancelling subscription', this.dtSub)
+        this.dtSub?.unsubscribe()
+    }
+
+
+
+    ngOnDestroy(): void {
+        this.productsSub?.unsubscribe()
+    }
+
     ngAfterViewInit(): void {
         // console.log('ngAfterViewInit productDetail', this.productDetail)
     }
