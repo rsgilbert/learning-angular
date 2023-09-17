@@ -1,16 +1,13 @@
 import { AfterViewInit, Component, EventEmitter, Host, OnInit, Optional, Output, SkipSelf, ViewChild, OnDestroy } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
-import { Product } from '../product';
 import { ProductsService } from '../products.service';
 import { ProductViewService } from '../product-view.service';
 import { Subscription, Observable } from 'rxjs';
-
+import { Product } from '../product';
 @Component({
     selector: 'app-product-list',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css'],
-    providers: [ ProductViewService, { provide: ProductsService, useClass: ProductsService}], // this ProductsService instance will be used for this component and child components
-//    viewProviders: [ProductsService]
 })
 export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
     @ViewChild(ProductDetailComponent)

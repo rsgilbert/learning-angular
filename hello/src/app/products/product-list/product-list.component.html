@@ -10,7 +10,8 @@
 <ul>
 <li *ngFor="let product of products$ | async; let i=index"
         (click)="selectedProduct=product">
-        <app-product-view [id]="i"></app-product-view>
+        {{ product.name}}
+        <!-- <app-product-view [id]="i"></app-product-view> -->
         <!-- <p *ngFor="let p of product | keyvalue">
                 <span>{{ p.key }} : {{ p.value }}</span>
             </p> -->

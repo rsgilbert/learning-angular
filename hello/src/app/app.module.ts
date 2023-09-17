@@ -8,7 +8,7 @@ import { NumericDirective } from './numeric.directive';
 import { PermissionDirective } from './permission.directive';
 import { AutofocusDirective } from './autofocus.directive';
 // import { CopyrightDirective } from './copyright.directive';
-
+import { HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { AutofocusDirective } from './autofocus.directive';
     BrowserModule,
     ProductsModule,
     CartComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

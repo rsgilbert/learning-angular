@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Product } from './product';
-
 @Pipe({
   name: 'sort',
   pure: true

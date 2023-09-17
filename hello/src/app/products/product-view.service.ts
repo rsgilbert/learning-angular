@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductsService } from './products.service';
-import { Product } from './product';
 import { Observable, filter, of, switchMap } from 'rxjs';
-
+import { Product } from './product';
 @Injectable({
     providedIn: 'root'
 })
