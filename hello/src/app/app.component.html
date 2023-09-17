@@ -9,10 +9,10 @@
 <p>{{ config.version }}</p>
 <p>{{ productsService.comment }}</p> -->
 <app-auth></app-auth>
-<div>
-    <a routerLink="/products">Products</a>
+<div routerLinkActive="div-active">
+    <a routerLink="/products" routerLinkActive="active">Products</a>
 </div>
-<div>
-    <a routerLink="/cart">Cart</a>
+<div routerLinkActive="div-active">
+    <a routerLink="/cart" routerLinkActive="active">Cart</a>
 </div>
 <router-outlet></router-outlet>

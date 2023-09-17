@@ -5,6 +5,13 @@ a {
     margin: 5px;
 }
 
+.active {
+    color: green;
+}
+.div-active {
+    border: 1px dotted green;
+}
+
 a:hover {
     opacity: 0.8;
 }
