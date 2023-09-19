@@ -41,14 +41,17 @@ export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     cancelDateSubscription() {
-        console.log('cancelling subscription', this.dtSub)
+        console.log('cancelling date subscription')
         this.dtSub?.unsubscribe()
     }
 
 
 
     ngOnDestroy(): void {
+        console.log('product-list ngOnDestroy()')
         this.productsSub?.unsubscribe()
+        this.cancelDateSubscription()
+
     }
 
     ngAfterViewInit(): void {

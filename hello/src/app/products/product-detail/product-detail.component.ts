@@ -1,11 +1,11 @@
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Product } from '../product';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.css'],
@@ -13,10 +13,12 @@ import { AuthService } from 'src/app/auth/auth.service';
     // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
-    @Input() id: number | undefined = -1 
-    product$:Observable<Product> | undefined
+    @Input() 
+    id: number | undefined = -1
 
-    @Input() product : Product | undefined
+    product$: Observable<Product> | undefined
+
+    @Input() product: Product | undefined
     price = 0
     @Output() bought = new EventEmitter<string>()
 
@@ -30,16 +32,26 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         return this.product?.name ?? '';
     }
 
-    constructor(private productsService: ProductsService, public authService: AuthService) {
+    constructor(
+        private productsService: ProductsService,
+        public authService: AuthService,
+        private route: ActivatedRoute
+    ) {
         // console.log('ProductDetailComponent constructor(): name is', this.name, 'price is', this.price)
     }
 
     ngOnInit(): void {
+        this.product$ = this.route.paramMap.pipe(
+            switchMap(params => {
+                console.dir(params, { depth: null })
+                return this.productsService.getProduct(Number(params.get('id')))
+            })
+        )
         // console.log('ProductDetailComponent ngOnInit(): Name is', this.name, 'price is', this.price)
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.product$ = this.productsService.getProduct(this.id ?? -1)
+        // this.product$ = this.productsService.getProduct(this.id ?? -1)
         // console.log(changes)
         // const nameChanges = changes['name']
         // console.dir(nameChanges, { depth: null })

@@ -3,7 +3,9 @@ import { Observable, map, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Product, ProductDTO } from './product';
 
-
+// [routerLink] - use of squares is property binding
+// *ngFor - use of * means ngFor is a structural directive
+// (click) - use of brackets means click is an output event 
 
 @Injectable({
     providedIn: 'root'
@@ -18,18 +20,18 @@ export class ProductsService {
         console.log('constructing products service')
     }
 
-    addProduct(name: string, price: number) : Observable<Product> {
+    addProduct(name: string, price: number): Observable<Product> {
         return this.http.post<ProductDTO>(this.productsUrl, {
             title: name,
-            price: price 
+            price: price
         })
-        .pipe(
-            map(productDTO => this.convertToProduct(productDTO))
-        )
+            .pipe(
+                map(productDTO => this.convertToProduct(productDTO))
+            )
     }
 
     getProducts(): Observable<Product[]> {
-        // return of(this.products)
+        return of(this.products)
         const options = {
             headers: new HttpHeaders({
                 Authorization: "tkn1",
@@ -41,14 +43,20 @@ export class ProductsService {
         )
     }
 
-    getProduct(id: number) : Observable<Product> {
-        return this.http.get<ProductDTO>(`${this.productsUrl}/${id}`).pipe(map(this.convertToProduct))
+    getProduct(id: number): Observable<Product> {
+        const product = this.products.find(product => product.id === id)
+        if (!product) {
+            return new Observable();
+        }
+        return of(product)
+
+        // return this.http.get<ProductDTO>(`${this.productsUrl}/${id}`).pipe(map(this.convertToProduct))
     }
 
-    private products : Product[] = [
+    private products: Product[] = [
         {
             id: 1,
-            name: 'Javeline' ,
+            name: 'Javeline',
             price: Number((100 * this.p1).toFixed(2)),
         },
         {
@@ -74,7 +82,7 @@ export class ProductsService {
         console.log(`after: ${this.comment} by ${this.commentSetBy}`)
     }
 
-    private convertToProduct(product: ProductDTO) : Product {
+    private convertToProduct(product: ProductDTO): Product {
         return {
             id: product.id,
             name: product.title,
