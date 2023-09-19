@@ -1,4 +1,4 @@
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, of,tap } from 'rxjs';
 import { Product } from '../product';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from '../products.service';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
     // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
-    @Input() 
+    @Input()
     id: number | undefined = -1
 
     product$: Observable<Product> | undefined
@@ -42,13 +42,21 @@ export class ProductDetailComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         console.log('ngOnInit called')
-        const id = Number(this.route.snapshot.params['id'])
-        console.log('id', id)
-        this.product$ = this.productsService.getProduct(id)
+        // const id = Number(this.route.snapshot.params['id'])
+        // console.log('id', id)
+        // this.product$ = this.productsService.getProduct(id)
 
         this.route.queryParamMap.subscribe(params => {
             console.log(JSON.stringify(params))
         })
+        // console.log(this.route.data[''])
+        this.product$ = this.route.data.pipe(
+            switchMap(d => of(d['product'])),
+            tap(product => {
+                console.log('xx')
+                console.dir(product)
+            })
+        )
         // this.product$ = this.route.paramMap.pipe(
         //     switchMap(params => {
         //         console.log('params')
