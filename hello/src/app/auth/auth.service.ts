@@ -6,7 +6,7 @@ import { tap, Observable, of } from 'rxjs'
     providedIn: 'root'
 })
 export class AuthService {
-    private token = 'f'
+    private token = ''
 
     get isLoggedIn() { return !!this.token }
 

@@ -9,5 +9,6 @@ export const authGuard: CanActivateFn = () => {
     if(authService.isLoggedIn) { 
         return true 
     }
+    confirm('You are not authorized to access the requested page')
     return router.parseUrl('/')
 }

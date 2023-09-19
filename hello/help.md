@@ -14,3 +14,5 @@ ng generate component auth --export
 generate interceptor
 ng generate interceptor auth
 
+add a new module and include routing in it
+ng generate module about --routingo

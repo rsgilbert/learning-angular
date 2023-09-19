@@ -11,9 +11,14 @@ import { checkoutGuard } from './checkout.guard';
 const routes: Routes = [
     {
         path: 'cart',
-        component: CartComponent, 
+        component: CartComponent,
         canActivate: [authGuard],
         canDeactivate: [checkoutGuard]
+    },
+    {
+        path: 'about',
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
+        canMatch: [authGuard]
     },
     { path: '**', component: PageNotFoundComponent }
 ]
