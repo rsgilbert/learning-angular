@@ -41,8 +41,10 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
+        console.log('ngOnInit called')
         this.product$ = this.route.paramMap.pipe(
             switchMap(params => {
+                console.log('params')
                 console.dir(params, { depth: null })
                 return this.productsService.getProduct(Number(params.get('id')))
             })
@@ -56,5 +58,9 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         // const nameChanges = changes['name']
         // console.dir(nameChanges, { depth: null })
         // console.log('isFirstChange', nameChanges.isFirstChange())
+    }
+
+    ngOnDestroy() {
+        console.log('product-detail ngOnDestroy()')
     }
 }
