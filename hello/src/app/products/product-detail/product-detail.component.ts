@@ -42,13 +42,20 @@ export class ProductDetailComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         console.log('ngOnInit called')
-        this.product$ = this.route.paramMap.pipe(
-            switchMap(params => {
-                console.log('params')
-                console.dir(params, { depth: null })
-                return this.productsService.getProduct(Number(params.get('id')))
-            })
-        )
+        const id = Number(this.route.snapshot.params['id'])
+        console.log('id', id)
+        this.product$ = this.productsService.getProduct(id)
+
+        this.route.queryParamMap.subscribe(params => {
+            console.log(JSON.stringify(params))
+        })
+        // this.product$ = this.route.paramMap.pipe(
+        //     switchMap(params => {
+        //         console.log('params')
+        //         console.dir(params, { depth: null })
+        //         return this.productsService.getProduct(Number(params.get('id')))
+        //     })
+        // )
         // console.log('ProductDetailComponent ngOnInit(): Name is', this.name, 'price is', this.price)
     }
 
