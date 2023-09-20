@@ -15,10 +15,16 @@ const routes: Routes = [
         canActivate: [authGuard],
         canDeactivate: [checkoutGuard]
     },
+    // lazily load module
+    // {
+    //     path: 'about',
+    //     loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
+    //     canMatch: [authGuard]
+    // },
+    // lazily load component
     {
         path: 'about',
-        loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
-        canMatch: [authGuard]
+        loadComponent: () => import('./about/about-info/about-info.component').then(c => c.AboutInfoComponent)
     },
     { path: '**', component: PageNotFoundComponent }
 ]

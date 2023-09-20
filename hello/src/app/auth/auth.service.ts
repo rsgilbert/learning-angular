@@ -6,7 +6,7 @@ import { tap, Observable, of } from 'rxjs'
     providedIn: 'root'
 })
 export class AuthService {
-    private token = ''
+    private token = 'm'
 
     get isLoggedIn() { return !!this.token }
 
@@ -15,8 +15,8 @@ export class AuthService {
     private loginUrl = "https://fakestoreapi.com/auth/login"
 
     login(): Observable<string> {
-        // this.token = 'xxx'
-        // return of('xxx');
+        this.token = 'xxx'
+        return of('xxx');
         return this.http.post<string>(this.loginUrl, {
             username: 'david_r',
             password: '3478*#54'
