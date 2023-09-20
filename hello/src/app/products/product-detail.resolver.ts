@@ -9,8 +9,8 @@ export const productDetailResolver : ResolveFn<Product> =
         const productService = inject(ProductsService)
         const id = Number(route.paramMap.get('id'))
         console.log('id', id)
-        if(id > 10 || id <= 1) {
-            confirm('id must be btn 2-9')
+        if(id > 10 || id < 0) {
+            confirm('id must be btn 0-9')
         }
         return productService.getProduct(id)
     }

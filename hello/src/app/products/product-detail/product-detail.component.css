@@ -1,8 +1,13 @@
-h1, h2 {
+h1,
+h2 {
     border: 3px dashed black;
 }
 
 
 li {
     font-style: italic;
+}
+
+form {
+    display: inline;
 }

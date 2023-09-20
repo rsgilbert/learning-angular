@@ -1,7 +1,7 @@
 <div *ngIf="product$ | async as product">
     <h1 appAutofocus>Product Details</h1>
     <h3>{{ product.name }}</h3>
-    <p>{{ productName }}</p>
+    <p>Price: {{ product.price }}</p>
 
     <div [ngSwitch]="product.name">
         <p *ngSwitchCase='"Blanket"'>
@@ -13,6 +13,12 @@
         <p *ngSwitchDefault>
             Product is for general use
         </p>
+    </div>
+    <div>
+        <form (ngSubmit)="changePrice(product, newPrice)">
+            <input placeholder="New price" name="price" [(ngModel)]="newPrice" />
+            <button type="submit">Change</button>
+        </form>
     </div>
     <button *ngIf="authService.isLoggedIn" (click)="buy()">Buy Now</button>
 </div>
