@@ -4,6 +4,21 @@
         <input id="name" #name formControlName="name" required>
         <label for="price">Price</label>
         <input id="price" #price formControlName="price" required/>
+        <form formGroupName="info">
+            <h2>Product Information</h2>
+            <div>
+                <label for="category">Category</label>
+                <input id="category" formControlName="category" />
+            </div>
+            <div>
+                <label for="descr">Description</label>
+                <input id="descr" formControlName="description" />
+            </div>
+            <div>
+                <label for="photo">Photo URL</label>
+                <input id="photo" formControlName="image" />
+            </div>
+        </form>
     </div>
     <div>
         <button (click)="createProduct()">
