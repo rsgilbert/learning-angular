@@ -11,7 +11,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ProductsRoutingModule } from './products-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
         CommonModule, FilterPipe,
         AutofocusDirective,
         ProductsRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [ProductListComponent],
 })

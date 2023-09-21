@@ -1,11 +1,13 @@
-<div>
-    <label for="name">Name</label>
-    <input id="name" #name>
-    <label for="price">Price</label>
-    <input id="price" #price />
-</div>
-<div>
-    <button (click)="createProduct(name.value, price.valueAsNumber)">
-        Create
-    </button>
-</div>
+<form [formGroup]="productForm">
+    <div>
+        <label for="name">Name</label>
+        <input id="name" #name formControlName="name" required>
+        <label for="price">Price</label>
+        <input id="price" #price formControlName="price" required/>
+    </div>
+    <div>
+        <button (click)="createProduct()">
+            Create
+        </button>
+    </div>
+</form>
