@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-products-create',
@@ -12,7 +12,7 @@ export class ProductsCreateComponent {
     @Output()
     added = new EventEmitter<Product>()
 
-    constructor(private productsService: ProductsService) { }
+    constructor(private productsService: ProductsService, private builder: FormBuilder) { }
 
     get name() {
         return this.productForm.controls.name;
@@ -33,13 +33,26 @@ export class ProductsCreateComponent {
         // })
     }
 
-    productForm = new FormGroup({
-        name: new FormControl('', { nonNullable: true }),
-        price: new FormControl<number | undefined>(undefined, { nonNullable: true }),
-        info: new FormGroup({
-            category: new FormControl(''),
-            description: new FormControl(''),
-            image: new FormControl('')
+    // productForm = new FormGroup({
+    //     name: new FormControl('', { nonNullable: true }),
+    //     price: new FormControl<number | undefined>(undefined, { nonNullable: true }),
+    //     info: new FormGroup({
+    //         category: new FormControl(''),
+    //         description: new FormControl(''),
+    //         image: new FormControl('')
+    //     })
+    // })
+
+    productForm: FormGroup<{
+        name: FormControl<string>,
+        price: FormControl<number | undefined>
+    }> | undefined
+
+    private buildForm() {
+        this.productForm = this.builder.nonNullable.group({
+           name: this.builder.nonNullable.control(''),
+           price: this.builder.nonNullable.control<number|undefined>(undefined, {}) 
         })
-    })
+    }
+
 }
