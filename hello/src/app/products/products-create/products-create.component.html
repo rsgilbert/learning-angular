@@ -1,9 +1,13 @@
 <form [formGroup]="productForm">
     <div>
         <label for="name">Name</label>
-        <input id="name" #name formControlName="name" required>
+        <input id="name" formControlName="name" required>
+        <span *ngIf="name.touched && name.invalid">The name is not valid</span>
         <label for="price">Price</label>
-        <input id="price" #price formControlName="price" required/>
+        <input id="price" formControlName="price" required/>
+        <span *ngIf="price.hasError('min')">The price is below minimum allowed value</span>
+        <span *ngIf="price.invalid && price.hasError('required')">The price is required</span>
+       
         <form formGroupName="info">
             <h2>Product Information</h2>
             <div>
@@ -21,7 +25,8 @@
         </form>
     </div>
     <div>
-        <button (click)="createProduct()">
+        <button (click)="createProduct()" 
+            [disabled]="!productForm.valid">
             Create
         </button>
     </div>
